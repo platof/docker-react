@@ -1,23 +1,11 @@
 pipeline {
-  agent any
- 
-  tools {nodejs "nodejs12.2"}
- 
-  stages {
-  
-    stage('Cloning Git') {
-      steps {
-        git 'https://github.com/platof/docker-react'
-      }
+    agent { docker { image 'node:12.22.8-alpine' } }
+    stages {
+        stage('build') {
+            steps {
+                sh 'node --version'
+                sh 'npm install'
+            }
+        }
     }
-	
-	
-    stage('Install dependencies') {
-      steps {
-        sh 'node --version'
-        echo 'install npm...'
-        sh 'npm install'
-      }
-    }
-  }
 }
