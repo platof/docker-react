@@ -1,8 +1,13 @@
 pipeline {
-    agent { docker { image 'node:16.13.1-alpine' } }
+    agent any
+    tools {
+
+
+    }
     stages {
         stage('build') {
             steps {
+                echo 'install npm...'
                 sh 'node --version'
 		sh 'npm install'
             }
