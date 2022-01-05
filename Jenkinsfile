@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'node:12.22.8-alpine' } }
+    agent { any { image 'node:12.13.0-alpine' } }
     stages {
         stage('build') {
             steps {
